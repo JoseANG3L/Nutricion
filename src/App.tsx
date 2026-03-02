@@ -13,6 +13,10 @@ import Citas from './pages/Citas';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 
+// Rutas protegidas
+import ProtectedRoute from './components/ProtectedRoute';
+import Seguimiento from './pages/Seguimiento';
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -26,10 +30,18 @@ const App: React.FC = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<PostDetail />} />
             <Route path="/citas" element={<Citas />} />
+            <Route path="/seguimiento" element={<Seguimiento />} />
             
-            <Route path="/admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
-            
+
+            <Route 
+              path="/admin" 
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              } 
+            />
 
             <Route path="*" element={
               <div className="flex flex-col items-center justify-center py-20">

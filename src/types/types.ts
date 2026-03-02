@@ -11,11 +11,13 @@ export interface Post {
 
 export interface Appointment {
   id?: string;
+  folio: string;
   patientName: string;
   phone: string;
   date: string;
   time: string;
   reason: string;
+  details?: string;
   status: 'pending' | 'confirmed';
 }
 
